@@ -8,8 +8,15 @@ using System.Threading.Tasks;
 
 namespace mediaTek86.dal
 {
+    /// <summary>
+    /// Personnel
+    /// </summary>
     public class PersonnelDal
     {
+        /// <summary>
+        /// liste Personnel
+        /// </summary>
+        /// <returns></returns>
         public static List<Personnel> GetAllPersonnels()
         {
             List<Personnel> listePersonnel = new List<Personnel>();
@@ -44,6 +51,12 @@ namespace mediaTek86.dal
             return listePersonnel;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="personnel"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public static bool InsertPersonnel(Personnel personnel)
         {
             throw new NotImplementedException();

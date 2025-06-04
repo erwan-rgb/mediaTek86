@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace mediaTek86.Modèle
 {
+    /// <summary>
+    /// Motif
+    /// </summary>
     public class motif
     {
         public int IdMotif { get; set; }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace mediaTek86.Modèle
 {
+    /// <summary>
+    /// Service
+    /// </summary>
     public class service
     {
         public int IdService { get; set; }

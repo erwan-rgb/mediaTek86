@@ -8,8 +8,19 @@ using System.Threading.Tasks;
 
 namespace mediaTek86.dal
 {
+    /// <summary>
+    /// Stock Absence
+    /// </summary>
     public class AbsenceDal
     {
+        /// <summary>
+        /// Ajout Absence
+        /// </summary>
+        /// <param name="idPersonnel"></param>
+        /// <param name="dateDebut"></param>
+        /// <param name="dateFin"></param>
+        /// <param name="motif"></param>
+        /// <returns></returns>
         public static bool AjouterAbsence(int idPersonnel, DateTime dateDebut, DateTime dateFin, string motif)
         {
             try
@@ -38,11 +49,22 @@ namespace mediaTek86.dal
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public static List<Absence> GetAllAbsences()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="absence"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public static bool InsertAbsence(Absence absence)
         {
             throw new NotImplementedException();

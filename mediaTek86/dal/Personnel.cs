@@ -1,5 +1,8 @@
 ﻿namespace mediaTek86.dal
 {
+    /// <summary>
+    /// Personnel
+    /// </summary>
     public class Personnel
     {
         public int IdPersonnel { get; internal set; }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace mediaTek86.Modèle
 {
+    /// <summary>
+    /// Responsable
+    /// </summary>
     public class responsable
     {
         public int IdResponsable { get; set; }

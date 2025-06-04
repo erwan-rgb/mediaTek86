@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace mediaTek86.Controller
 {
+    /// <summary>
+    /// contrôle personnel
+    /// </summary>
     public class PersonnelController
     {
         public List<Personnel> GetPersonnels()

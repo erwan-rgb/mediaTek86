@@ -7,8 +7,17 @@ using System.Threading.Tasks;
 
 namespace mediaTek86.dal
 {
+    /// <summary>
+    /// Utilisateur
+    /// </summary>
     public class UserDal
     {
+        /// <summary>
+        /// Vérifie login , pwd
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public static bool CheckLogin(string login, string password)
         {
             try

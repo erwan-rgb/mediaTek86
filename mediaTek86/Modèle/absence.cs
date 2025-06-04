@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace mediaTek86.Modèle
 {
+    /// <summary>
+    /// Absence
+    /// </summary>
     public class absence
     {
         public int IdAbsence { get; set; }
@@ -14,6 +17,7 @@ namespace mediaTek86.Modèle
         public DateTime DateFin { get; set; }
         public string Motif { get; set; }
 
+        
         public absence(int idAbsence, int idPersonnel, DateTime dateDebut, DateTime dateFin, string motif)
         {
             IdAbsence = idAbsence;

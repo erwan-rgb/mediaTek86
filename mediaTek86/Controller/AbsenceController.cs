@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace mediaTek86.Controller
 {
+    /// <summary>
+    /// Absence
+    /// </summary>
     public class AbsenceController
     {
         public List<Absence> GetAbsences()

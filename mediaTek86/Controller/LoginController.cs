@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace mediaTek86.Controller
 {
+    /// <summary>
+    /// Contrôle du login et pwd
+    /// </summary>
     public class LoginController
     {
         public bool VerifierConnexion(string login, string password)

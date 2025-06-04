@@ -32,5 +32,45 @@ namespace mediaTek86.View
         {
 
         }
+
+        private void txtNomAjouter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMailModification_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstAffectationAjouter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEnregistrerAjoutAbs_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEnregistrerModification_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAbsence_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

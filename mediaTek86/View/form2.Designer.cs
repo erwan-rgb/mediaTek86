@@ -127,6 +127,7 @@ namespace mediaTek86.View
             btnSupprimer.TabIndex = 4;
             btnSupprimer.Text = "Supprimer";
             btnSupprimer.UseVisualStyleBackColor = true;
+            btnSupprimer.Click += btnSupprimer_Click;
             // 
             // btnAbsence
             // 
@@ -136,6 +137,7 @@ namespace mediaTek86.View
             btnAbsence.TabIndex = 5;
             btnAbsence.Text = "Absence";
             btnAbsence.UseVisualStyleBackColor = true;
+            btnAbsence.Click += btnAbsence_Click;
             // 
             // Ajouter
             // 
@@ -164,6 +166,7 @@ namespace mediaTek86.View
             lstAffectationAjouter.Name = "lstAffectationAjouter";
             lstAffectationAjouter.Size = new Size(125, 84);
             lstAffectationAjouter.TabIndex = 9;
+            lstAffectationAjouter.SelectedIndexChanged += lstAffectationAjouter_SelectedIndexChanged;
             // 
             // btnEnregistrerAjouter
             // 
@@ -201,6 +204,7 @@ namespace mediaTek86.View
             txtNomAjouter.Name = "txtNomAjouter";
             txtNomAjouter.Size = new Size(125, 27);
             txtNomAjouter.TabIndex = 5;
+            txtNomAjouter.TextChanged += txtNomAjouter_TextChanged;
             // 
             // label5
             // 
@@ -276,6 +280,7 @@ namespace mediaTek86.View
             btnEnregistrerModification.TabIndex = 11;
             btnEnregistrerModification.Text = "enregistrer";
             btnEnregistrerModification.UseVisualStyleBackColor = true;
+            btnEnregistrerModification.Click += btnEnregistrerModification_Click;
             // 
             // lstAffectationModification
             // 
@@ -291,6 +296,7 @@ namespace mediaTek86.View
             txtMailModification.Name = "txtMailModification";
             txtMailModification.Size = new Size(125, 27);
             txtMailModification.TabIndex = 8;
+            txtMailModification.TextChanged += txtMailModification_TextChanged;
             // 
             // txtTelModification
             // 
@@ -396,6 +402,7 @@ namespace mediaTek86.View
             btnEnregistrerAjoutAbs.TabIndex = 3;
             btnEnregistrerAjoutAbs.Text = "enregistrer";
             btnEnregistrerAjoutAbs.UseVisualStyleBackColor = true;
+            btnEnregistrerAjoutAbs.Click += btnEnregistrerAjoutAbs_Click;
             // 
             // txtMotifAjout
             // 
@@ -512,6 +519,7 @@ namespace mediaTek86.View
             btnAnnuler.TabIndex = 10;
             btnAnnuler.Text = "Annuler";
             btnAnnuler.UseVisualStyleBackColor = true;
+            btnAnnuler.Click += btnAnnuler_Click;
             // 
             // form2
             // 

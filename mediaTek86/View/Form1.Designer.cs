@@ -44,6 +44,7 @@ namespace mediaTek86
             btnConnexion.TabIndex = 0;
             btnConnexion.Text = "Connexion";
             btnConnexion.UseVisualStyleBackColor = true;
+            btnConnexion.Click += btnConnexion_Click;
             // 
             // txtLogin
             // 
@@ -51,6 +52,7 @@ namespace mediaTek86
             txtLogin.Name = "txtLogin";
             txtLogin.Size = new Size(228, 27);
             txtLogin.TabIndex = 1;
+            txtLogin.TextChanged += txtLogin_TextChanged;
             // 
             // txtPwd
             // 

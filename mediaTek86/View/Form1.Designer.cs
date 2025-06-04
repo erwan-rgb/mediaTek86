@@ -1,4 +1,5 @@
-﻿namespace mediaTek86
+﻿
+namespace mediaTek86
 {
     partial class Form1
     {
@@ -28,36 +29,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            btnConnexion = new Button();
+            txtLogin = new TextBox();
+            txtPwd = new TextBox();
             label1 = new Label();
             label2 = new Label();
             SuspendLayout();
             // 
-            // button1
+            // btnConnexion
             // 
-            button1.Location = new Point(202, 132);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 0;
-            button1.Text = "Connexion";
-            button1.UseVisualStyleBackColor = true;
+            btnConnexion.Location = new Point(202, 132);
+            btnConnexion.Name = "btnConnexion";
+            btnConnexion.Size = new Size(94, 29);
+            btnConnexion.TabIndex = 0;
+            btnConnexion.Text = "Connexion";
+            btnConnexion.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtLogin
             // 
-            textBox1.Location = new Point(68, 36);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(228, 27);
-            textBox1.TabIndex = 1;
+            txtLogin.Location = new Point(68, 36);
+            txtLogin.Name = "txtLogin";
+            txtLogin.Size = new Size(228, 27);
+            txtLogin.TabIndex = 1;
             // 
-            // textBox2
+            // txtPwd
             // 
-            textBox2.Location = new Point(66, 78);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(230, 27);
-            textBox2.TabIndex = 2;
-            textBox2.TextChanged += this.textBox2_TextChanged;
+            txtPwd.Location = new Point(66, 78);
+            txtPwd.Name = "txtPwd";
+            txtPwd.Size = new Size(230, 27);
+            txtPwd.TabIndex = 2;
+            txtPwd.TextChanged += textBox2_TextChanged;
             // 
             // label1
             // 
@@ -76,7 +77,7 @@
             label2.Size = new Size(48, 20);
             label2.TabIndex = 4;
             label2.Text = "Pwd : ";
-            label2.Click += this.label2_Click;
+            label2.Click += label2_Click;
             // 
             // Form1
             // 
@@ -85,20 +86,31 @@
             ClientSize = new Size(325, 195);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(button1);
+            Controls.Add(txtPwd);
+            Controls.Add(txtLogin);
+            Controls.Add(btnConnexion);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
-        private Button button1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private Button btnConnexion;
+        private TextBox txtLogin;
+        private TextBox txtPwd;
         private Label label1;
         private Label label2;
     }

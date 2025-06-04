@@ -31,8 +31,6 @@ namespace mediaTek86.View
         {
             dataGridView1 = new DataGridView();
             vScrollBar1 = new VScrollBar();
-            btnAjouter = new Button();
-            btnModifer = new Button();
             btnSupprimer = new Button();
             btnAbsence = new Button();
             Ajouter = new GroupBox();
@@ -76,6 +74,8 @@ namespace mediaTek86.View
             label15 = new Label();
             label14 = new Label();
             btnAnnuler = new Button();
+            btnAjouter = new Button();
+            btnModifier = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             Ajouter.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -98,26 +98,6 @@ namespace mediaTek86.View
             vScrollBar1.Name = "vScrollBar1";
             vScrollBar1.Size = new Size(26, 247);
             vScrollBar1.TabIndex = 1;
-            // 
-            // btnAjouter
-            // 
-            btnAjouter.Location = new Point(12, 265);
-            btnAjouter.Name = "btnAjouter";
-            btnAjouter.Size = new Size(94, 29);
-            btnAjouter.TabIndex = 2;
-            btnAjouter.Text = "Ajouter";
-            btnAjouter.UseVisualStyleBackColor = true;
-            btnAjouter.Click += button1_Click;
-            // 
-            // btnModifer
-            // 
-            btnModifer.Location = new Point(112, 265);
-            btnModifer.Name = "btnModifer";
-            btnModifer.Size = new Size(94, 29);
-            btnModifer.TabIndex = 3;
-            btnModifer.Text = "Modifier";
-            btnModifer.UseVisualStyleBackColor = true;
-            btnModifer.Click += button2_Click;
             // 
             // btnSupprimer
             // 
@@ -176,6 +156,7 @@ namespace mediaTek86.View
             btnEnregistrerAjouter.TabIndex = 10;
             btnEnregistrerAjouter.Text = "enregistrer";
             btnEnregistrerAjouter.UseVisualStyleBackColor = true;
+            btnEnregistrerAjouter.Click += btnEnregistrerAjouter_Click;
             // 
             // txtMailAjouter
             // 
@@ -521,11 +502,33 @@ namespace mediaTek86.View
             btnAnnuler.UseVisualStyleBackColor = true;
             btnAnnuler.Click += btnAnnuler_Click;
             // 
+            // btnAjouter
+            // 
+            btnAjouter.Location = new Point(12, 265);
+            btnAjouter.Name = "btnAjouter";
+            btnAjouter.Size = new Size(94, 29);
+            btnAjouter.TabIndex = 11;
+            btnAjouter.Text = "Ajouter";
+            btnAjouter.UseVisualStyleBackColor = true;
+            btnAjouter.Click += button1_Click_1;
+            // 
+            // btnModifier
+            // 
+            btnModifier.Location = new Point(112, 265);
+            btnModifier.Name = "btnModifier";
+            btnModifier.Size = new Size(94, 29);
+            btnModifier.TabIndex = 12;
+            btnModifier.Text = "Modifier";
+            btnModifier.UseVisualStyleBackColor = true;
+            btnModifier.Click += btnModifier_Click;
+            // 
             // form2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(669, 939);
+            Controls.Add(btnModifier);
+            Controls.Add(btnAjouter);
             Controls.Add(btnAnnuler);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
@@ -533,8 +536,6 @@ namespace mediaTek86.View
             Controls.Add(Ajouter);
             Controls.Add(btnAbsence);
             Controls.Add(btnSupprimer);
-            Controls.Add(btnModifer);
-            Controls.Add(btnAjouter);
             Controls.Add(vScrollBar1);
             Controls.Add(dataGridView1);
             Name = "form2";
@@ -571,8 +572,6 @@ namespace mediaTek86.View
 
         private DataGridView dataGridView1;
         private VScrollBar vScrollBar1;
-        private Button btnAjouter;
-        private Button btnModifer;
         private Button btnSupprimer;
         private Button btnAbsence;
         private GroupBox Ajouter;
@@ -616,5 +615,7 @@ namespace mediaTek86.View
         private DateTimePicker dtpDateFinModif;
         private DateTimePicker dtpDateDebModif;
         private Button btnAnnuler;
+        private Button btnAjouter;
+        private Button btnModifier;
     }
 }

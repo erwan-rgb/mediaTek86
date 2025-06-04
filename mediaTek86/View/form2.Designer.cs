@@ -460,6 +460,7 @@ namespace mediaTek86.View
             btnEnregistrerModifAbs.TabIndex = 4;
             btnEnregistrerModifAbs.Text = "enregistrer";
             btnEnregistrerModifAbs.UseVisualStyleBackColor = true;
+            btnEnregistrerModifAbs.Click += btnEnregistrerModifAbs_Click;
             // 
             // txtMotifModif
             // 

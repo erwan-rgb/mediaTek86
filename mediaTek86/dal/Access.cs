@@ -13,7 +13,7 @@ namespace mediaTek86.dal
     /// </summary>
     public class Access
     {
-        private static readonly string stringConnect = "Server=localhost;Port=3008;Database=mediaTek86;Uid=mediaTek86;Pwd=erwan;";
+        private static readonly string stringConnect = "Server=localhost;Port=3008;Database=mediatek86;User Id=mediaTek86;Pwd=erwan;";
 
         /// <summary>
         /// retourne stringConnect

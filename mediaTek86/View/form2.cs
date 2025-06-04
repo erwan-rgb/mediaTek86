@@ -36,26 +36,88 @@ namespace mediaTek86.View
 
         }
 
+        /// <summary>
+        /// txtNomAjouter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtNomAjouter_TextChanged(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// txtMailModif
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtMailModification_TextChanged(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// listAffectationAjouter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstAffectationAjouter_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Bouton pour enregistrer les ajouts
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEnregistrerAjoutAbs_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Veuillez sélectionner un personnel.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            int idPersonnel = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["idPersonnel"].Value);
+            DateTime dateDebut = dtpDateDebAjout.Value;
+            DateTime dateFin = dtpDateFinAjout.Value;
+            string motif = txtMotifAjout.Text.Trim();
+
+
+            if (string.IsNullOrEmpty(motif))
+            {
+                MessageBox.Show("Veuillez sélectionner un motif.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (dateFin < dateDebut)
+            {
+                MessageBox.Show("La date de fin ne peut pas être antérieure à la date de début.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (VerifierAbsenceExistante(idPersonnel, dateDebut, dateFin))
+            {
+                MessageBox.Show("Une absence existe déjà sur ce créneau.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (AjouterAbsence(idPersonnel, dateDebut, dateFin, motif))
+            {
+                MessageBox.Show("Absence ajoutée avec succès !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ChargerAbsencesPersonnel(idPersonnel); // Rafraîchir l'affichage
+            }
+            else
+            {
+                MessageBox.Show("Erreur lors de l'ajout de l'absence.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        /// <summary>
+        /// Bouton pour enregistrer les Modifs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEnregistrerModification_Click(object sender, EventArgs e)
         {
             string nom = txtNomModification.Text.Trim();
@@ -86,12 +148,22 @@ namespace mediaTek86.View
             }
         }
 
+        /// <summary>
+        /// Bouton pour Annuler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             dataGridViewAbsence.Visible = false;
             dataGridView1.Visible = true;
         }
 
+        /// <summary>
+        /// Bouton Absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAbsence_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 0)
@@ -111,6 +183,11 @@ namespace mediaTek86.View
             ChargerAbsencesPersonnel(idPersonnel);
         }
 
+        /// <summary>
+        /// Bouton Supprimer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 0)
@@ -136,8 +213,37 @@ namespace mediaTek86.View
                     MessageBox.Show("Erreur lors de la suppression.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            if (dataGridViewAbsence.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Veuillez sélectionner une absence à supprimer.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int idAbsence = Convert.ToInt32(dataGridViewAbsence.SelectedRows[0].Cells["idAbsence"].Value);
+            DateTime dateDebut = Convert.ToDateTime(dataGridViewAbsence.SelectedRows[0].Cells["dateDebut"].Value);
+            DateTime dateFin = Convert.ToDateTime(dataGridViewAbsence.SelectedRows[0].Cells["dateFin"].Value);
+
+            DialogResult confirm = MessageBox.Show($"Êtes-vous sûr de vouloir supprimer l'absence du {dateDebut.ToShortDateString()} au {dateFin.ToShortDateString()} ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                if (SupprimerAbsence(idAbsence))
+                {
+                    MessageBox.Show("Absence supprimée avec succès !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ChargerAbsencesPersonnel(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["idPersonnel"].Value)); // Rafraîchir l'affichage
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de la suppression de l'absence.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
+        /// <summary>
+        /// Bouton Ajouter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click_1(object sender, EventArgs e)
         {
             string nom = txtNomAjouter.Text.Trim();
@@ -163,6 +269,11 @@ namespace mediaTek86.View
             }
         }
 
+        /// <summary>
+        /// Bouton Modifier
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModifier_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 0)
@@ -183,6 +294,16 @@ namespace mediaTek86.View
             txtMailModification.Text = email;
             lstAffectationModification.SelectedItem = affectation;
         }
+
+        /// <summary>
+        /// Ajout du personnel
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="prenom"></param>
+        /// <param name="tel"></param>
+        /// <param name="email"></param>
+        /// <param name="affectation"></param>
+        /// <returns></returns>
         private bool AjouterPersonnel(string nom, string prenom, string tel, string email, string affectation)
         {
             try
@@ -212,6 +333,10 @@ namespace mediaTek86.View
                 return false;
             }
         }
+
+        /// <summary>
+        /// Charger la liste du personnel
+        /// </summary>
         private void ChargerListePersonnel()
         {
             try
@@ -236,11 +361,23 @@ namespace mediaTek86.View
             }
         }
 
+        /// <summary>
+        /// Bouton pour enregistrer un ajout
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEnregistrerAjouter_Click(object sender, EventArgs e)
         {
             ChargerListePersonnel();
 
         }
+
+        /// <summary>
+        /// Supprimer le personnel
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="prenom"></param>
+        /// <returns></returns>
         private bool SupprimerPersonnel(string nom, string prenom)
         {
             try
@@ -267,6 +404,16 @@ namespace mediaTek86.View
                 return false;
             }
         }
+
+        /// <summary>
+        /// Modifier le personnel
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="prenom"></param>
+        /// <param name="tel"></param>
+        /// <param name="email"></param>
+        /// <param name="affectation"></param>
+        /// <returns></returns>
         private bool ModifierPersonnel(string nom, string prenom, string tel, string email, string affectation)
         {
             try
@@ -296,6 +443,11 @@ namespace mediaTek86.View
                 return false;
             }
         }
+
+        /// <summary>
+        /// Charger les Absences du personnel
+        /// </summary>
+        /// <param name="idPersonnel"></param>
         private void ChargerAbsencesPersonnel(int idPersonnel)
         {
             try
@@ -321,6 +473,11 @@ namespace mediaTek86.View
             }
         }
 
+        /// <summary>
+        /// Data Grid View de la liste du personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -329,5 +486,207 @@ namespace mediaTek86.View
                 ChargerAbsencesPersonnel(idPersonnel); // Affiche les absences
             }
         }
+
+        /// <summary>
+        /// Ajouter des absences
+        /// </summary>
+        /// <param name="idPersonnel"></param>
+        /// <param name="dateDebut"></param>
+        /// <param name="dateFin"></param>
+        /// <param name="motif"></param>
+        /// <returns></returns>
+        private bool AjouterAbsence(int idPersonnel, DateTime dateDebut, DateTime dateFin, string motif)
+        {
+            try
+            {
+                string connectionString = Access.GetConnectionString();
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "INSERT INTO absence (idPersonnel, dateDebut, dateFin, motif) VALUES (@idPersonnel, @dateDebut, @dateFin, @motif)";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idPersonnel", idPersonnel);
+                        cmd.Parameters.AddWithValue("@dateDebut", dateDebut);
+                        cmd.Parameters.AddWithValue("@dateFin", dateFin);
+                        cmd.Parameters.AddWithValue("@motif", motif);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur : {ex.Message}", "Erreur SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Vérifier les absences Existantes
+        /// </summary>
+        /// <param name="idPersonnel"></param>
+        /// <param name="dateDebut"></param>
+        /// <param name="dateFin"></param>
+        /// <returns></returns>
+        private bool VerifierAbsenceExistante(int idPersonnel, DateTime dateDebut, DateTime dateFin)
+        {
+            try
+            {
+                string connectionString = Access.GetConnectionString();
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT COUNT(*) FROM absence WHERE idPersonnel = @idPersonnel AND ((dateDebut BETWEEN @dateDebut AND @dateFin) OR (dateFin BETWEEN @dateDebut AND @dateFin))";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idPersonnel", idPersonnel);
+                        cmd.Parameters.AddWithValue("@dateDebut", dateDebut);
+                        cmd.Parameters.AddWithValue("@dateFin", dateFin);
+
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur : {ex.Message}", "Erreur SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Supprimer Absence
+        /// </summary>
+        /// <param name="idAbsence"></param>
+        /// <returns></returns>
+        private bool SupprimerAbsence(int idAbsence)
+        {
+            try
+            {
+                string connectionString = Access.GetConnectionString();
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "DELETE FROM absence WHERE idAbsence = @idAbsence";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idAbsence", idAbsence);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur : {ex.Message}", "Erreur SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Bouton pour enregistrer les modifs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnEnregistrerModifAbs_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewAbsence.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Veuillez sélectionner une absence à modifier.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int idAbsence = Convert.ToInt32(dataGridViewAbsence.SelectedRows[0].Cells["idAbsence"].Value);
+            DateTime dateDebut = Convert.ToDateTime(dataGridViewAbsence.SelectedRows[0].Cells["dateDebut"].Value);
+            DateTime dateFin = Convert.ToDateTime(dataGridViewAbsence.SelectedRows[0].Cells["dateFin"].Value);
+            string motif = dataGridViewAbsence.SelectedRows[0].Cells["motif"].Value.ToString();
+
+            // Pré-remplir les champs du formulaire avec les informations actuelles
+            dtpDateDebModif.Value = dateDebut;
+            dtpDateFinModif.Value = dateFin;
+            txtMotifModif.Text = motif;
+
+            int Absence = Convert.ToInt32(dataGridViewAbsence.SelectedRows[0].Cells["idAbsence"].Value);
+            DateTime dateDeb = dtpDateDebModif.Value;
+            DateTime DateFin = dtpDateDebModif.Value;
+            string Motif = txtMotifModif.Text.Trim();
+
+            if (string.IsNullOrEmpty(motif))
+            {
+                MessageBox.Show("Le motif ne peut pas être vide.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (DateFin < dateDeb)
+            {
+                MessageBox.Show("La date de fin ne peut pas être antérieure à la date de début.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (VerifierAbsenceExistante(Absence, dateDeb, DateFin))
+            {
+                MessageBox.Show("Une absence existe déjà sur ce créneau.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            DialogResult confirmation = MessageBox.Show("Confirmez-vous la modification de cette absence ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmation == DialogResult.Yes)
+            {
+                if (ModifierAbsence(Absence, dateDeb, DateFin, Motif))
+                {
+                    MessageBox.Show("Absence modifiée avec succès !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ChargerAbsencesPersonnel(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["idPersonnel"].Value)); // Rafraîchir l'affichage
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de la modification.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Modifier Absence
+        /// </summary>
+        /// <param name="idAbsence"></param>
+        /// <param name="dateDebut"></param>
+        /// <param name="dateFin"></param>
+        /// <param name="motif"></param>
+        /// <returns></returns>
+        private bool ModifierAbsence(int idAbsence, DateTime dateDebut, DateTime dateFin, string motif)
+        {
+            try
+            {
+                string connectionString = Access.GetConnectionString();
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "UPDATE absence SET dateDebut = @dateDebut, dateFin = @dateFin, motif = @motif WHERE idAbsence = @idAbsence";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@dateDebut", dateDebut);
+                        cmd.Parameters.AddWithValue("@dateFin", dateFin);
+                        cmd.Parameters.AddWithValue("@motif", motif);
+                        cmd.Parameters.AddWithValue("@idAbsence", idAbsence);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur : {ex.Message}", "Erreur SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
     }
 }

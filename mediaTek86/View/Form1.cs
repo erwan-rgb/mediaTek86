@@ -29,15 +29,26 @@ namespace mediaTek86
 
         }
 
+        /// <summary>
+        /// TxtLogin
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtLogin_TextChanged(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Bouton de connexion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConnexion_Click(object sender, EventArgs e)
         {
             string login = txtLogin.Text.Trim();
             string password = txtPwd.Text.Trim();
+
 
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
@@ -47,15 +58,25 @@ namespace mediaTek86
 
             if (VerifierAuthentification(login, password))
             {
+             
                 form2 form2 = new form2();
                 form2.Show();
-                this.Hide(); // Cache `Form1`
+                this.Hide();
+
             }
             else
             {
                 MessageBox.Show("Login ou mot de passe incorrect.", "Accès refusé", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
+
+        /// <summary>
+        /// vérifie si le login, pwd sont comptatible
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         private bool VerifierAuthentification(string login, string password)
         {
 
@@ -86,6 +107,11 @@ namespace mediaTek86
 
         }
 
+        /// <summary>
+        /// txtPwd
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtPwd_TextChanged(object sender, EventArgs e)
         {
 

@@ -76,11 +76,13 @@ namespace mediaTek86.View
             btnAnnuler = new Button();
             btnAjouter = new Button();
             btnModifier = new Button();
+            dataGridViewAbsence = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             Ajouter.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAbsence).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
@@ -91,6 +93,7 @@ namespace mediaTek86.View
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(604, 247);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // vScrollBar1
             // 
@@ -522,11 +525,21 @@ namespace mediaTek86.View
             btnModifier.UseVisualStyleBackColor = true;
             btnModifier.Click += btnModifier_Click;
             // 
+            // dataGridViewAbsence
+            // 
+            dataGridViewAbsence.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewAbsence.Location = new Point(12, 12);
+            dataGridViewAbsence.Name = "dataGridViewAbsence";
+            dataGridViewAbsence.RowHeadersWidth = 51;
+            dataGridViewAbsence.Size = new Size(577, 247);
+            dataGridViewAbsence.TabIndex = 13;
+            // 
             // form2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(669, 939);
+            Controls.Add(dataGridViewAbsence);
             Controls.Add(btnModifier);
             Controls.Add(btnAjouter);
             Controls.Add(btnAnnuler);
@@ -550,6 +563,7 @@ namespace mediaTek86.View
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAbsence).EndInit();
             ResumeLayout(false);
         }
 
@@ -617,5 +631,6 @@ namespace mediaTek86.View
         private Button btnAnnuler;
         private Button btnAjouter;
         private Button btnModifier;
+        private DataGridView dataGridViewAbsence;
     }
 }

@@ -31,9 +31,9 @@ namespace mediaTek86
         {
             btnConnexion = new Button();
             txtLogin = new TextBox();
-            txtPwd = new TextBox();
             label1 = new Label();
             label2 = new Label();
+            txtPwd = new TextBox();
             SuspendLayout();
             // 
             // btnConnexion
@@ -54,14 +54,6 @@ namespace mediaTek86
             txtLogin.TabIndex = 1;
             txtLogin.TextChanged += txtLogin_TextChanged;
             // 
-            // txtPwd
-            // 
-            txtPwd.Location = new Point(66, 78);
-            txtPwd.Name = "txtPwd";
-            txtPwd.Size = new Size(230, 27);
-            txtPwd.TabIndex = 2;
-            txtPwd.TextChanged += textBox2_TextChanged;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -81,14 +73,22 @@ namespace mediaTek86
             label2.Text = "Pwd : ";
             label2.Click += label2_Click;
             // 
+            // txtPwd
+            // 
+            txtPwd.Location = new Point(68, 78);
+            txtPwd.Name = "txtPwd";
+            txtPwd.Size = new Size(228, 27);
+            txtPwd.TabIndex = 5;
+            txtPwd.TextChanged += txtPwd_TextChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(325, 195);
+            Controls.Add(txtPwd);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(txtPwd);
             Controls.Add(txtLogin);
             Controls.Add(btnConnexion);
             Name = "Form1";
@@ -112,8 +112,8 @@ namespace mediaTek86
 
         private Button btnConnexion;
         private TextBox txtLogin;
-        private TextBox txtPwd;
         private Label label1;
         private Label label2;
+        private TextBox txtPwd;
     }
 }

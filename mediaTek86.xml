@@ -1,0 +1,479 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>mediaTek86</name>
+    </assembly>
+    <members>
+        <member name="T:mediaTek86.bddManager.BddManager">
+            <summary>
+            BddManager
+            </summary>
+        </member>
+        <member name="M:mediaTek86.bddManager.BddManager.#ctor(System.String)">
+            <summary>
+            Constructeur pour ouvrir la connexion
+            </summary>
+            <param name="stringConnect">Chaîne de connexion</param>
+        </member>
+        <member name="M:mediaTek86.bddManager.BddManager.CloseConnection">
+            <summary>
+            Ferme la connexion proprement
+            </summary>
+        </member>
+        <member name="M:mediaTek86.bddManager.BddManager.GetInstance(System.String)">
+            <summary>
+            Retourne StringConnect de BddManager
+            </summary>
+            <param name="stringConnect"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mediaTek86.bddManager.BddManager.ReqUpdate(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            ReqUpdate
+            </summary>
+            <param name="stringQuery"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:mediaTek86.bddManager.BddManager.ReqSelect(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            ReqSelect
+            </summary>
+            <param name="stringQuery"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="T:mediaTek86.Controller.Absence">
+            <summary>
+            Absence
+            </summary>
+        </member>
+        <member name="T:mediaTek86.Controller.AbsenceController">
+            <summary>
+            Absence
+            </summary>
+        </member>
+        <member name="T:mediaTek86.Controller.LoginController">
+            <summary>
+            Contrôle du login et pwd
+            </summary>
+        </member>
+        <member name="T:mediaTek86.Controller.PersonnelController">
+            <summary>
+            contrôle personnel
+            </summary>
+        </member>
+        <member name="T:mediaTek86.dal.AbsenceDal">
+            <summary>
+            Stock Absence
+            </summary>
+        </member>
+        <member name="M:mediaTek86.dal.AbsenceDal.AjouterAbsence(System.Int32,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Ajout Absence
+            </summary>
+            <param name="idPersonnel"></param>
+            <param name="dateDebut"></param>
+            <param name="dateFin"></param>
+            <param name="motif"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mediaTek86.dal.AbsenceDal.GetAllAbsences">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:mediaTek86.dal.AbsenceDal.InsertAbsence(mediaTek86.Controller.Absence)">
+            <summary>
+            
+            </summary>
+            <param name="absence"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:mediaTek86.dal.Access">
+            <summary>
+            Class Access
+            </summary>
+        </member>
+        <member name="M:mediaTek86.dal.Access.GetConnectionString">
+            <summary>
+            retourne stringConnect
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:mediaTek86.dal.DataAccess">
+            <summary>
+            Class DataAccess
+            </summary>
+        </member>
+        <member name="M:mediaTek86.dal.DataAccess.#ctor">
+            <summary>
+            Accéder à Access
+            </summary>
+        </member>
+        <member name="M:mediaTek86.dal.DataAccess.ExecuteSelect(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            ExecuteSelect
+            </summary>
+            <param name="query"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mediaTek86.dal.DataAccess.ExecuteUpdate(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            ExecuteUpdate
+            </summary>
+            <param name="query"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="T:mediaTek86.dal.Personnel">
+            <summary>
+            Personnel
+            </summary>
+        </member>
+        <member name="T:mediaTek86.dal.PersonnelDal">
+            <summary>
+            Personnel
+            </summary>
+        </member>
+        <member name="M:mediaTek86.dal.PersonnelDal.GetAllPersonnels">
+            <summary>
+            liste Personnel
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:mediaTek86.dal.PersonnelDal.InsertPersonnel(mediaTek86.dal.Personnel)">
+            <summary>
+            
+            </summary>
+            <param name="personnel"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:mediaTek86.dal.UserDal">
+            <summary>
+            Utilisateur
+            </summary>
+        </member>
+        <member name="M:mediaTek86.dal.UserDal.CheckLogin(System.String,System.String)">
+            <summary>
+            Vérifie login , pwd
+            </summary>
+            <param name="login"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="T:mediaTek86.Modèle.absence">
+            <summary>
+            Absence
+            </summary>
+        </member>
+        <member name="T:mediaTek86.Modèle.motif">
+            <summary>
+            Motif
+            </summary>
+        </member>
+        <member name="T:mediaTek86.Modèle.personnel">
+            <summary>
+            Personnel
+            </summary>
+        </member>
+        <member name="T:mediaTek86.Modèle.responsable">
+            <summary>
+            Responsable
+            </summary>
+        </member>
+        <member name="T:mediaTek86.Modèle.service">
+            <summary>
+            Service
+            </summary>
+        </member>
+        <member name="M:mediaTek86.Program.Main">
+            <summary>
+             The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:mediaTek86.Form1">
+            <summary>
+            Form1
+            </summary>
+        </member>
+        <member name="M:mediaTek86.Form1.#ctor">
+            <summary>
+            Form1
+            </summary>
+        </member>
+        <member name="M:mediaTek86.Form1.Form1_Load(System.Object,System.EventArgs)">
+            <summary>
+            Form1 chargement
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.Form1.txtLogin_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+            TxtLogin
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.Form1.btnConnexion_Click(System.Object,System.EventArgs)">
+            <summary>
+            Bouton de connexion
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.Form1.VerifierAuthentification(System.String,System.String)">
+            <summary>
+            vérifie si le login, pwd sont comptatible
+            </summary>
+            <param name="login"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mediaTek86.Form1.txtPwd_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+            txtPwd
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:mediaTek86.Form1.components">
+            <summary>
+             Required designer variable.
+            </summary>
+        </member>
+        <member name="M:mediaTek86.Form1.Dispose(System.Boolean)">
+            <summary>
+             Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:mediaTek86.Form1.InitializeComponent">
+            <summary>
+             Required method for Designer support - do not modify
+             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:mediaTek86.View.form2">
+            <summary>
+            Form2
+            </summary>
+        </member>
+        <member name="M:mediaTek86.View.form2.#ctor">
+            <summary>
+            Form2
+            </summary>
+        </member>
+        <member name="M:mediaTek86.View.form2.form2_Load(System.Object,System.EventArgs)">
+            <summary>
+            Form2 chargement
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.View.form2.txtNomAjouter_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+            txtNomAjouter
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.View.form2.txtMailModification_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+            txtMailModif
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.View.form2.lstAffectationAjouter_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            listAffectationAjouter
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.View.form2.btnEnregistrerAjoutAbs_Click(System.Object,System.EventArgs)">
+            <summary>
+            Bouton pour enregistrer les ajouts
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.View.form2.btnEnregistrerModification_Click(System.Object,System.EventArgs)">
+            <summary>
+            Bouton pour enregistrer les Modifs
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.View.form2.btnAnnuler_Click(System.Object,System.EventArgs)">
+            <summary>
+            Bouton pour Annuler
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.View.form2.btnAbsence_Click(System.Object,System.EventArgs)">
+            <summary>
+            Bouton Absence
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.View.form2.btnSupprimer_Click(System.Object,System.EventArgs)">
+            <summary>
+            Bouton Supprimer
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.View.form2.button1_Click_1(System.Object,System.EventArgs)">
+            <summary>
+            Bouton Ajouter
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.View.form2.btnModifier_Click(System.Object,System.EventArgs)">
+            <summary>
+            Bouton Modifier
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.View.form2.AjouterPersonnel(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Ajout du personnel
+            </summary>
+            <param name="nom"></param>
+            <param name="prenom"></param>
+            <param name="tel"></param>
+            <param name="email"></param>
+            <param name="affectation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mediaTek86.View.form2.ChargerListePersonnel">
+            <summary>
+            Charger la liste du personnel
+            </summary>
+        </member>
+        <member name="M:mediaTek86.View.form2.btnEnregistrerAjouter_Click(System.Object,System.EventArgs)">
+            <summary>
+            Bouton pour enregistrer un ajout
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.View.form2.SupprimerPersonnel(System.String,System.String)">
+            <summary>
+            Supprimer le personnel
+            </summary>
+            <param name="nom"></param>
+            <param name="prenom"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mediaTek86.View.form2.ModifierPersonnel(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Modifier le personnel
+            </summary>
+            <param name="nom"></param>
+            <param name="prenom"></param>
+            <param name="tel"></param>
+            <param name="email"></param>
+            <param name="affectation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mediaTek86.View.form2.ChargerAbsencesPersonnel(System.Int32)">
+            <summary>
+            Charger les Absences du personnel
+            </summary>
+            <param name="idPersonnel"></param>
+        </member>
+        <member name="M:mediaTek86.View.form2.dataGridView1_CellContentClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
+            <summary>
+            Data Grid View de la liste du personnel
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.View.form2.AjouterAbsence(System.Int32,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Ajouter des absences
+            </summary>
+            <param name="idPersonnel"></param>
+            <param name="dateDebut"></param>
+            <param name="dateFin"></param>
+            <param name="motif"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mediaTek86.View.form2.VerifierAbsenceExistante(System.Int32,System.DateTime,System.DateTime)">
+            <summary>
+            Vérifier les absences Existantes
+            </summary>
+            <param name="idPersonnel"></param>
+            <param name="dateDebut"></param>
+            <param name="dateFin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mediaTek86.View.form2.SupprimerAbsence(System.Int32)">
+            <summary>
+            Supprimer Absence
+            </summary>
+            <param name="idAbsence"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mediaTek86.View.form2.btnEnregistrerModifAbs_Click(System.Object,System.EventArgs)">
+            <summary>
+            Bouton pour enregistrer les modifs
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:mediaTek86.View.form2.ModifierAbsence(System.Int32,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Modifier Absence
+            </summary>
+            <param name="idAbsence"></param>
+            <param name="dateDebut"></param>
+            <param name="dateFin"></param>
+            <param name="motif"></param>
+            <returns></returns>
+        </member>
+        <member name="F:mediaTek86.View.form2.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:mediaTek86.View.form2.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:mediaTek86.View.form2.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:mediaTek86.ApplicationConfiguration">
+            <summary>
+             Bootstrap the application configuration.
+            </summary>
+        </member>
+        <member name="M:mediaTek86.ApplicationConfiguration.Initialize">
+            <summary>
+             Bootstrap the application as follows:
+             <code>
+             global::System.Windows.Forms.Application.EnableVisualStyles();
+             global::System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
+             global::System.Windows.Forms.Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            </code>
+            </summary>
+        </member>
+    </members>
+</doc>
